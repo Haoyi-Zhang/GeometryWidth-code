@@ -27,7 +27,7 @@ The first command regenerates and verifies:
 - 729 symmetric-matrix algebra cases, 41 plain-integer arithmetic regressions, 519 coordinate covariances, 12 kernel-basis congruences, all 168 structured descent bounds, nested-view and repeated-view checks, and rank-deficient width-five witnesses;
 - the 55-row internal bibliography audit and the 55-row live-record audit;
 - a frozen fixed-seed rational stress set with 1,600 width-four cases, 40 width-five witnesses, and six stress mutations;
-- a static audit of the 15 supplied Python files, including the repository-material checker.
+- a static audit of the supplied Python files, including the repository-material checker. The retained historical audit covered 15 files; the supplementary regression below is also scanned by a fresh audit.
 
 The second command independently reconciles the serialized counts, exact oracle CSV, plot CSV, Gram-error formula, wrong-affine-covariance counterexample, reference audits, frozen stress set, and static source audit.
 
@@ -49,6 +49,7 @@ python inspect_views.py inputs/observations.json \
   --output results/observations-audit.json
 python src/verify_holdout.py results/holdout-stress.json --mutation-test
 python src/reviewer_audit.py .
+python -B tests/regression_data_only.py
 python check_references.py
 python check_reference_external.py
 ```
@@ -60,6 +61,8 @@ pytest -q tests/test_retained_artifact.py
 ```
 
 Pytest is only a reviewer convenience; the documented scientific path has no third-party Python dependency.
+
+The three supplementary observation-only regressions are explicitly run in scientific CI, outside the frozen corruption/algebra census. They check literal rational scenes, the semidefinite recovery boundary, full retained data-only certificates, a late fourth pivot, checker corruptions, and local arithmetic reuse. `produce.data_only` retains complete elimination and reuses its validated baseline inverse and `W W^T` within one call. The independent checker and finite-witness search are unchanged. These are correctness/work-reuse checks, not measured speedups or a new scene-recovery guarantee; historical results are not rewritten.
 
 ## Evidence retained
 
@@ -83,8 +86,4 @@ The main checker, frozen-stress verifier, and report do not import the producer.
 
 There are no trained parameters, tuned thresholds, or train/test accuracy claims. Conventional statistical overfitting therefore does not apply. The frozen stress set addresses fixture-specific implementation risk only. The project does not establish missing-view, perspective-camera, arbitrary image-noise, neural-optimization, unseen-sample, real-image, semantic, or deployment performance.
 
-See `ASSUMPTIONS-AND-NONCLAIMS.md`, `REVIEWER-RISK-REGISTER.md`, `FINAL-BLIND-REVIEW.md`, and `FINAL-ARTIFACT-AUDIT.md` for the final boundaries and audit record.
-
-## Release status
-
-The archive is for internal evaluation. Public release, license choice, authorship/contribution confirmation, repository upload, and venue-required declarations remain human decisions. No submission or upload has been performed.
+The admitted geometry and deployment limitations are summarized above; exact licensing conditions are described in `LICENSE`.
